@@ -9,7 +9,7 @@ This application provides a convenient way to discover and download Udemy's free
 - **Standalone Application:** No Python or external dependencies are required. Just run the .exe file.
 
 ## Usage
-1. Download the "Udemy.exe" file from the [Releases](https://github.com/N00BSC00B/Udemy-Free-Course-Grabber/releases/tag/v1.0.1) section of this GitHub repository.
+1. Download the "Udemy.exe" file from the [Releases](https://github.com/N00BSC00B/Udemy-Free-Course-Grabber/releases/) section of this GitHub repository.
 
 2. Double-click the "Udemy.exe" file to launch the application.
 
