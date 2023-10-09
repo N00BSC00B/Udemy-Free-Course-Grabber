@@ -17,9 +17,11 @@ This application provides a convenient way to discover and download Udemy's free
 
 ## Screenshots
 ![Main Window](screenshots/main_window.png)
+
 *Main application window displaying Udemy free courses.*
 
 ![Main Window](screenshots/search.png)
+
 *Application window displaying Udemy free courses after search.*
 
 ## Disclaimer
