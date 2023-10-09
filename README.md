@@ -33,6 +33,10 @@ Contributions to this project are welcome! If you encounter any issues or have s
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
+
+- [answersQ](https://answersq.com) website used for scrapping.
+
 ## Author
 Sayan Barma
 
