@@ -1,3 +1,4 @@
+# Import necessary libraries
 import requests
 from bs4 import BeautifulSoup
 import tkinter
@@ -7,87 +8,122 @@ import os
 import sys
 import threading
 
+# Create the main window
 mainWindow = tkinter.Tk()
 
+# Define a function to find the path of a given file in relative path
 
-def resource_path(relative_path: str):
+
+def resource_path(relative_path: str) -> str:
     """
     Function to find the Path of the given file in Relative Path.
 
     :param relative_path: The Relative Path of the file.
     :return: str: The Actual Path of the file.
     """
-
     try:
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath(".")
-
     return os.path.join(base_path, relative_path)
 
 
+# Open the image file and create a PhotoImage object
 a = Image.open(resource_path("assets/logo.png"))
 logo = ImageTk.PhotoImage(a)
 
+# Send a GET request to the website and parse the HTML content
 get = requests.get(
-    "https://answersq.com/udemy-paid-courses-for-free-with-certificate/"
-)
+    "https://answersq.com/udemy-paid-courses-for-free-with-certificate/")
 soup = BeautifulSoup(get.content, "html.parser")
 ul_ele = soup.find_all("ul", class_="has-medium-font-size")
 
+# Initialize variables
 active = []
 activeD = {}
 height = 400
 width = 400
 bg = "#36393E"
 
+# Define a function to open the URL of a course when its label is clicked
 
-def open_url(event):
+
+def open_url(event: tkinter.Event) -> None:
+    """
+    Function to open the URL of a course when its label is clicked.
+
+    :param event: The event object.
+    :return: None.
+    """
     lab = event.widget
     course = lab.cget("text")
-
     url = activeD[course]
-
     webbrowser.open_new_tab(url)
 
+# Define a function to change the color of a label when the mouse enters it
 
-def enter(event):
+
+def enter(event: tkinter.Event) -> None:
+    """
+    Function to change the color of a label when the mouse enters it.
+
+    :param event: The event object.
+    :return: None.
+    """
     lab = event.widget
     lab.config(fg="#87CEFA")
 
+# Define a function to change the color of a label when the mouse leaves it
 
-def leave(event):
+
+def leave(event: tkinter.Event) -> None:
+    """
+    Function to change the color of a label when the mouse leaves it.
+
+    :param event: The event object.
+    :return: None.
+    """
     lab = event.widget
     lab.config(fg="white")
 
+# Define a function to scroll the canvas when the mouse wheel is used
 
-def on_mousewheel(event):
+
+def on_mousewheel(event: tkinter.Event) -> None:
+    """
+    Function to scroll the canvas when the mouse wheel is used.
+
+    :param event: The event object.
+    :return: None.
+    """
     steps = -1 * (int(event.delta) / 120)
     canva.yview_scroll(int(steps), "units")
 
+# Define a function to search for courses based on a keyword
 
-def search(e=None):
+
+def search(e: tkinter.Event = None) -> None:
+    """
+    Function to search for courses based on a keyword.
+
+    :param e: The event object.
+    :return: None.
+    """
     global active
     for i in active:
         i.destroy()
-
     active = []
-
     user = entry.get()
     send = []
-
     r = 0
-
     for ul in ul_ele:
         for li_ele in ul.find_all("li"):
             for i in li_ele.find_all("a"):
                 got = str(i.text)
-
                 if user.lower() in got.lower():
                     if got not in send:
                         url = i.get("href")
                         send.append(got)
-
                         Clabel = tkinter.Label(
                             f2,
                             text=got,
@@ -98,7 +134,6 @@ def search(e=None):
                             wraplength=width - 55,
                             cursor="hand2",
                         )
-
                         arrow = tkinter.Label(
                             f2,
                             text="»",
@@ -107,16 +142,13 @@ def search(e=None):
                             fg="white",
                             anchor="nw",
                         )
-
                         Clabel.grid(row=r, column=1, sticky="nw")
                         arrow.grid(row=r, column=0, sticky="nw")
                         Clabel.bind("<Button-1>", open_url)
                         active.append(Clabel)
                         active.append(arrow)
                         activeD[got] = url
-
                         r += 1
-
     if active == []:
         Clabel = tkinter.Label(
             f2,
@@ -129,18 +161,18 @@ def search(e=None):
             wraplength=width - 55,
             cursor="hand2",
         )
-
         Clabel.grid(row=r, column=1, sticky="ew")
-
         active.append(Clabel)
 
 
+# Set up the main window
 mainWindow.title("Udemy Free Courses")
 mainWindow.geometry(f"{width}x{height}")
 mainWindow.resizable(False, False)
 mainWindow.configure(bg=bg)
 mainWindow.iconphoto(False, logo)
 
+# Create the frames and widgets
 f1 = tkinter.Frame(
     mainWindow,
     height=60,
@@ -194,13 +226,13 @@ l2 = tkinter.Label(
     wraplength=width - 50,
 )
 
-# Frame 1
+# Add the widgets to the frames
 l1.grid(row=0, column=0)
 entry.grid(row=0, column=1)
 b1.grid(row=0, column=2, padx=5)
 l2.grid(row=1, column=0, padx=5, pady=5, columnspan=3)
 
-# Binds
+# Bind the events to the widgets
 canva.bind(
     "<Configure>",
     lambda e: canva.configure(scrollregion=canva.bbox("all"))
@@ -212,4 +244,5 @@ f2.bind(
 canva.bind_all("<MouseWheel>", on_mousewheel)
 entry.bind("<Return>", search)
 
+# Start the main loop
 mainWindow.mainloop()
