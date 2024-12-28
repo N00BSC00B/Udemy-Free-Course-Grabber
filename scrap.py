@@ -1,6 +1,7 @@
 # Import necessary libraries
 import requests
 from bs4 import BeautifulSoup
+import datetime
 
 
 # Send a GET request to the website and parse the HTML content
@@ -31,5 +32,12 @@ def get_course(keyword: str) -> dict:
 
 
 if __name__ == "__main__":
-    user = input("Enter the course you want to search: ")
-    print(get_course(user))
+    data = get_course("")
+    with open("courses.md", "w") as f:
+        # write in dd/mm/yyyy format
+        f.write(
+            f"## Courses Updated "
+            f"{datetime.datetime.now().strftime('%d/%m/%Y')}\n"
+        )
+        for course, url in data.items():
+            f.write(f"- [{course}]({url})\n")
