@@ -25,6 +25,8 @@ def get_course(keyword: str) -> dict:
         for li_ele in ul.find_all("li"):
             for i in li_ele.find_all("a"):
                 got = str(i.text)
+                if got == "About Us":
+                    return ret
                 if keyword in got.lower():
                     ret[got] = i.get("href")
 
