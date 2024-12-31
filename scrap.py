@@ -23,13 +23,13 @@ def get_course(keyword: str) -> dict:
     ret = {}
     for ul in ul_ele:
         for li_ele in ul.find_all("li"):
+            course_title = li_ele.get_text(separator=" ").split(" – ")[0]
             for i in li_ele.find_all("a"):
                 got = str(i.text)
                 if got == "About Us":
                     return ret
-                if keyword in got.lower():
-                    ret[got] = i.get("href")
-
+                if keyword in course_title.lower():
+                    ret[course_title] = i.get("href")
     return ret
 
 
