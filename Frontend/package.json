@@ -1,0 +1,95 @@
+{
+  "name": "udemy-free-course-grabber",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Discover and claim new 100% free Udemy courses every day. Save big, learn something new, and unlock your skills with daily updated coupons!",
+  "author": "Sayan Barma",
+  "main": "electron.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "concurrently -k -n \"VITE,ELECTRON\" -c \"yellow,blue\" \"npm run dev\" \"npm run electron:wait\"",
+    "electron:dev": "concurrently -k -n \"VITE,ELECTRON\" -c \"yellow,blue\" \"npm run dev\" \"npm run electron:wait\"",
+    "dev:capacitor": "npm run build && npx cap copy && npx cap open android",
+    "electron": "node_modules\\.bin\\electron.cmd .",
+    "electron:wait": "wait-on http://localhost:5173 && node_modules\\.bin\\electron.cmd .",
+    "android:dev": "npm run build && npx cap copy && npx cap open android",
+    "android:build": "npm run build && npx cap copy && npx cap build android",
+    "build:capacitor": "npm run build && npx cap copy && npx cap build android",
+    "build": "vite build",
+    "build:electron": "npm run build && npx electron-builder",
+    "electron:build": "npm run build && npx electron-builder",
+    "cap:sync": "npx cap sync",
+    "cap:copy": "npx cap copy",
+    "cap:build": "npx cap build android",
+    "cap:run": "npx cap run android",
+    "cap:open": "npx cap open android",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.udemy.course-grabber",
+    "productName": "Udemy Free Course Grabber",
+    "files": [
+      "dist/**/*",
+      "electron.js",
+      "preload.js",
+      "assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets",
+        "to": "assets"
+      }
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png",
+      "requestedExecutionLevel": "asInvoker",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.png"
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/app": "^7.0.1",
+    "@capacitor/browser": "^7.0.1",
+    "@capacitor/cli": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
+    "@capacitor/device": "^7.0.1",
+    "@capacitor/network": "^7.0.1",
+    "@tailwindcss/vite": "^4.1.11",
+    "axios": "^1.10.0",
+    "concurrently": "^9.2.0",
+    "daisyui": "^5.0.46",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hot-toast": "^2.5.2",
+    "react-toast": "^1.0.3",
+    "tailwindcss": "^4.1.11",
+    "wait-on": "^8.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^37.2.3",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.0.4"
+  }
+}
