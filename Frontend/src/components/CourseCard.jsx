@@ -1,5 +1,6 @@
 import { Star, Copy, ExternalLink, Tag, Clock } from "lucide-react";
 import { formatDistanceToNowStrict } from "date-fns";
+// import { utcToZonedTime } from "date-fns-tz";
 import toast from "react-hot-toast";
 import { openUrl } from "../services/api";
 
@@ -23,7 +24,7 @@ const CourseCard = ({ course, onCategoryChange }) => {
 
   // Format the "time ago" text.
   const timeAgo = course.sale_start
-    ? formatDistanceToNowStrict(new Date(course.sale_start))
+    ? formatDistanceToNowStrict(new Date(course.sale_start + "Z"))
     : null;
 
   const originalPrice = course.price > 0 ? `$${course.price.toFixed(0)}` : "";
@@ -70,12 +71,25 @@ const CourseCard = ({ course, onCategoryChange }) => {
                 className="
       absolute top-0 left-0 flex items-center
       px-2 py-1
-      rounded-tl-md rounded-br-lg z-20
-      bg-gradient-to-b from-black via-black/70 to-black/20
+      rounded-tl-xl rounded-bl-xl z-20
+      bg-gradient-to-br from-black via-black/50 to-transparent
     "
                 style={{
-                  width: "40%",
-                  minHeight: "20%",
+                  // Mobile
+                  ...(window.innerWidth < 768 && {
+                    width: "50%",
+                    height: "30%",
+                  }),
+                  // Tablet
+                  ...(window.innerWidth >= 768 &&
+                    window.innerWidth < 1024 && {
+                      width: "45%",
+                      height: "20%",
+                    }),
+                  ...(window.innerWidth >= 1024 && {
+                    width: "55%",
+                    height: "15%",
+                  }),
                   clipPath: "polygon(0 0, 100% 0, 85% 100%, 0% 100%)",
                 }}
               >

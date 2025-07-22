@@ -38,7 +38,7 @@ const TitleBar = () => {
     >
       <div className="flex items-center space-x-2">
         <img src={getIconPath()} alt="App Icon" className="w-4 h-4" />
-        <span className="text-sm font-medium">Udemy Course Grabber</span>
+        <span className="text-sm font-medium">Udemy Free Course Grabber</span>
       </div>
 
       <div
