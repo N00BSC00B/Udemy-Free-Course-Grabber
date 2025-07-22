@@ -25,6 +25,7 @@ _A cross-platform application to discover and access free Udemy courses_
 _Main interface showing course listings with filters and search_
 
 <img src="./screenshots/desktop-dark.png" alt="Desktop Screenshot - Dark Mode" width="700"/>
+
 _Dark mode support for comfortable browsing_
 
 ### Mobile Application (Android)
@@ -194,7 +195,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 <div align="center">
 
-Made with ❤️ by [Sayan Barma](https://github.com/N00BSC00B/Udemy-Free-Course-Grabber)
+Made with ❤️ by [Sayan Barma](https://github.com/N00BSC00B/)
 
 **If this project helped you, please consider giving it a ⭐!**
 
