@@ -6,15 +6,15 @@
 
 _A cross-platform application to discover and access free Udemy courses_
 
-</div>
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Android-lightgrey)](https://github.com/yourusername/udemy-course-grabber)
 [![React](https://img.shields.io/badge/React-18.0+-61DAFB?logo=react)](https://reactjs.org/)
 [![Electron](https://img.shields.io/badge/Electron-Latest-47848F?logo=electron)](https://electronjs.org/)
 [![Capacitor](https://img.shields.io/badge/Capacitor-Latest-119EFF?logo=capacitor)](https://capacitorjs.com/)
 
-[📱 Download Android APK](#installation) • [💻 Download Desktop App](#installation) • [🚀 Quick Start](#quick-start) • [📖 Documentation](#documentation)
+[📱 Download Android APK](#installation) • [💻 Download Desktop App](#installation)
+
+</div>
 
 ## 📸 Screenshots
 
@@ -24,7 +24,7 @@ _A cross-platform application to discover and access free Udemy courses_
 
 _Main interface showing course listings with filters and search_
 
-![Desktop Screenshot - Dark Mode](./screenshots/desktop-dark.png)
+<img src="./screenshots/desktop-dark.png" alt="Desktop Screenshot - Dark Mode" width="700"/>
 _Dark mode support for comfortable browsing_
 
 ### Mobile Application (Android)
